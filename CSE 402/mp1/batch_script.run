@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -l walltime=00:10:00
+#PBS -l nodes=1:ppn=16
+#PBS -N mp1
+#PBS -j oe
+#PBS -q cs
+
+module load papi
+module load intel/18.0
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=16
+./mm-papi > mp1.out
